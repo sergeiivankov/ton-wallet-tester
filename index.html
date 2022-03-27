@@ -8,10 +8,34 @@
   <section class="section">
     <div class="container">
       <h1 class="title">TON Wallet Tester</h1>
+      <hr>
       <div class="block">
-        <a href="ton://transfer/EQAEsS9_xtLyQxbCkIP3vf-RlI53w8tcPN7g8I12I8Xwsry0?amount=1000000000&text=comment" class="button">Send by URI</a>
+        &#9989; - support by extension, <span class="is-size-7">&#10060;</span> - no support
+      </div>
+      <hr>
+      <h1 class="title is-4">URI handling</h1>
+      <div class="buttons">
+        <a href="ton://transfer/EQAEsS9_xtLyQxbCkIP3vf-RlI53w8tcPN7g8I12I8Xwsry0?amount=1000000000&text=comment" class="button">
+          Simple link &ensp;&#9989;
+        </a>
+        <a href="ton://transfer/EQAEsS9_xtLyQxbCkIP3vf-RlI53w8tcPN7g8I12I8Xwsry0?amount=1000000000&text=comment" class="button">
+          <span>Link with child element &ensp;&#9989;</span>
+        </a>
+        <button class="button js-uri-open-function">
+          JS open function &ensp;&#9989;
+        </button>
+        <button class="button js-uri-location">
+          JS location change &ensp;<span class="is-size-7">&#10060;</span>
+        </button>
+        <button class="button js-uri-iframe-src">
+          JS iframe with src &ensp;<span class="is-size-7">&#10060;</span>
+        </button>
+        <button class="button js-uri-iframe-location">
+          JS iframe with location set &ensp;<span class="is-size-7">&#10060;</span>
+        </button>
       </div>
     </div>
   </section>
+  <script src="app.js"></script>
 </body>
 </html>
