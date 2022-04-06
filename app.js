@@ -3,6 +3,20 @@ window.addEventListener('load', () => {
 
   const $ = document.querySelector.bind(document);
 
+  let haveLogs = false;
+  const $providerLog = $('.js-provider-log');
+
+  const writeToLog = content => {
+    $providerLog.innerHTML += `${haveLogs ? '\n\n' : ''}${(new Date()).toLocaleTimeString()} (${performance.now()})\n${content}`;
+
+    if (!haveLogs) {
+      haveLogs = true;
+      $providerLog.style.display = null;
+    }
+
+    $providerLog.scroll(0, 999999);
+  };
+
   $('.js-uri-open-function').addEventListener('click', () => {
     window.open(URI, '_blank');
   });
@@ -25,4 +39,37 @@ window.addEventListener('load', () => {
     document.body.appendChild(iframe);
     iframe.contentWindow.location.href = URI;
   });
+
+  $('.js-method-get-chain').addEventListener('click', async () => {
+    writeToLog('Send "ton_getChainId"');
+    const chainId = await window.ton.send('ton_getChainId');
+    writeToLog(`Receive "ton_getChainId" answer: ${chainId}`);
+  });
+
+  const initDapp = () => {
+    $('.js-dapp-section').style.display = null;
+
+    window.ton.on('connect', () => {
+      writeToLog('Receive "connect" event');
+    });
+
+    window.ton.on('close', (code, reason) => {
+      writeToLog(`Receive "close" event with code and reason: ${code}, ${reason}`);
+    });
+
+    window.ton.on('notification', result => {
+      writeToLog(`Receive "notification" event with data: ${JSON.stringify(result)}`);
+    });
+
+    window.ton.on('chainChanged', chainId => {
+      writeToLog(`Receive "chainChanged" event with chain identifier: ${chainId}`);
+    });
+
+    window.ton.on('accountsChanged', accounts => {
+      writeToLog(`Receive "accountsChanged" event with accounts: ${accounts.join(', ')}`);
+    });
+  };
+
+  if (window.ton) initDapp();
+  else window.initDapp('tonready', initEventsLog);
 });

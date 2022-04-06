@@ -9,10 +9,6 @@
     <div class="container">
       <h1 class="title">TON Wallet Tester</h1>
       <hr>
-      <div class="block">
-        &#9989; - support by extension, <span class="is-size-7">&#10060;</span> - no support
-      </div>
-      <hr>
       <h1 class="title is-4">URI handling</h1>
       <div class="buttons">
         <a href="ton://transfer/EQAEsS9_xtLyQxbCkIP3vf-RlI53w8tcPN7g8I12I8Xwsry0?amount=1000000000&text=comment" class="button">
@@ -33,6 +29,17 @@
         <button class="button js-uri-iframe-location">
           JS iframe with location set &ensp;<span class="is-size-7">&#10060;</span>
         </button>
+      </div>
+      <div class="block">
+        &#9989; - supports by extension, <span class="is-size-7">&#10060;</span> - no support
+      </div>
+      <div class="js-dapp-section" style="display:none">
+        <h1 class="title is-4">dApp methods</h1>
+        <div class="buttons">
+          <button class="button js-method-get-chain">getChainId</button>
+        </div>
+        <h1 class="title is-4">Provider Log</h1>
+        <pre class="js-provider-log" style="display:none"></pre>
       </div>
     </div>
   </section>
