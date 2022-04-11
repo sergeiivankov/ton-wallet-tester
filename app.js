@@ -46,7 +46,24 @@ window.addEventListener('load', () => {
     writeToLog(`Receive "ton_getChainId" answer: ${chainId}`);
   });
 
+  $('.js-method-raw-sign').addEventListener('click', async () => {
+    writeToLog('Send "ton_rawSign"');
+    const signed = await window.ton.send('ton_rawSign', [{
+      data: '74657374746573747465737474657374746573747465737474657374'
+    }]);
+    writeToLog(`Receive "ton_rawSign" answer: ${signed}`);
+  });
+
+  $('.js-method-personal-sign').addEventListener('click', async () => {
+    writeToLog('Send "ton_personalSign"');
+    const signed = await window.ton.send('ton_personalSign', [{ data: '74657374746573747465737474657374746573747465737474657374' }]);
+    writeToLog(`Receive "ton_personalSign" answer: ${signed}`);
+  });
+
   const initDapp = () => {
+    $('.js-not-connected').style.display = 'none';
+    $('.js-connected').classList.remove('is-hidden');
+
     $('.js-dapp-section').style.display = null;
 
     window.ton.on('connect', () => {

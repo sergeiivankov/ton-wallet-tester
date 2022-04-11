@@ -7,7 +7,17 @@
 <body>
   <section class="section">
     <div class="container">
-      <h1 class="title">TON Wallet Tester</h1>
+      <div class="level">
+        <div class="level-left">
+          <h1 class="title">TON Wallet Tester</h1>
+        </div>
+        <div class="level-right">
+          <span class="has-text-warning-dark js-not-connected">
+            Extension wallet not connected
+          </span>
+          <span class="has-text-success is-hidden js-connected">Extension wallet connected</span>
+        </div>
+      </div>
       <hr>
       <h1 class="title is-4">URI handling</h1>
       <div class="buttons">
@@ -37,6 +47,8 @@
         <h1 class="title is-4">dApp methods</h1>
         <div class="buttons">
           <button class="button js-method-get-chain">getChainId</button>
+          <button class="button js-method-raw-sign">rawSign (not secure)</button>
+          <button class="button js-method-personal-sign">personalSign (secure)</button>
         </div>
         <h1 class="title is-4">Provider Log</h1>
         <pre class="js-provider-log" style="display:none"></pre>
